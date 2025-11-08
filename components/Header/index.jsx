@@ -112,7 +112,7 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
     >
         <Link href={"https://github.com/huzaifahmedz/Huzaif-Ahmed-portfolio-fourth"} target='_blank' className={isMobile ? 'w-full' : ''}>
             <Button className={`${isMobile ? 'w-full' : ''} rounded-2xl font-semibold bg-white text-gray-900 hover:bg-gray-200 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3`}>
-                <span className="hidden sm:inline">Use this template!</span>
+                <span className="hidden sm:inline">Repo Inside!</span>
                 <span className="sm:hidden">Template</span>
             </Button>
         </Link>
