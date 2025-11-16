@@ -27,9 +27,9 @@ Your contact form uses EmailJS to send emails directly to your inbox.
 **Template Name:** Portfolio Contact Form
 
 **Email Settings:**
-- **From Name:** `{{ Portfolio Contact Form }}`
-- **From Email:** Use Default Email Address (checked) - your Gmail
-- **Reply To:** `{{from_email}}` (so you can reply directly to the sender)
+- **From Name:** `Portfolio Contact Form` (or any static name you want)
+- **From Email:** ✅ **Check "Use Default Email Address"** - this will use your Gmail
+- **Reply To:** `{{from_email}}` ⚠️ **IMPORTANT: Must be exactly `{{from_email}}`** (so you can reply directly to the sender)
 - **To Email:** `chapokumih@gmail.com` (your email)
 
 **Subject:** New Message from {{from_name}}
@@ -51,10 +51,17 @@ This message was sent from your portfolio contact form.
 You can reply directly to {{from_email}}
 ```
 
-**Important:** Make sure the field names in your template match:
-- `{{from_name}}` - sender's name
-- `{{from_email}}` - sender's email  
+**⚠️ CRITICAL - Template Variable Names Must Match Exactly:**
+
+The form sends these field names, so your template MUST use these exact variable names:
+- `{{from_name}}` - sender's name (NOT `{{ sender's name}}` or `{{sender_name}}`)
+- `{{from_email}}` - sender's email (NOT `{{email}}` or `{{sender_email}}`)
 - `{{message}}` - sender's message
+
+**Common Mistakes to Avoid:**
+- ❌ Don't use `{{ sender's name}}` (with spaces) - use `{{from_name}}`
+- ❌ Don't use `{{email}}` - use `{{from_email}}`
+- ✅ Use exact variable names: `{{from_name}}`, `{{from_email}}`, `{{message}}`
 
 4. **Copy your Template ID**
 
@@ -92,6 +99,35 @@ After adding environment variables:
 2. Go to the Contact page
 3. Fill out and submit the form
 4. Check your email (chapokumih@gmail.com) - you should receive the message!
+
+## Troubleshooting
+
+### Error: "Failed to send message"
+
+**Most Common Issue: Template Variable Mismatch**
+
+If you see this error, check your EmailJS template:
+
+1. **Go to EmailJS Dashboard → Email Templates**
+2. **Edit your template**
+3. **Check these fields:**
+
+   - **From Name field:** Should be a static value like `Portfolio Contact Form` (NOT a variable)
+   - **Reply To field:** Must be exactly `{{from_email}}` (not `{{email}}` or `{{ sender's email}}`)
+   - **Subject line:** Use `{{from_name}}` (not `{{ sender's name}}`)
+   - **Email content:** Use `{{from_name}}`, `{{from_email}}`, and `{{message}}`
+
+4. **Save the template**
+5. **Test again**
+
+### Check Environment Variables in Vercel
+
+Make sure all three variables are set in Vercel:
+- `NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_ly12c7v`
+- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_18ik2gr`
+- `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=fN-_U-7Bu0HMYWeaw`
+
+After updating, **redeploy** your site in Vercel.
 
 ---
 
