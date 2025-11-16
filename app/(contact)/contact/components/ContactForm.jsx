@@ -31,6 +31,13 @@ const ContactForm = ({ onSubmit }) => {
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
+      // Debug: Log environment variables (values will be visible in browser console)
+      console.log('EmailJS Configuration:', {
+        serviceId: serviceId || 'MISSING',
+        templateId: templateId || 'MISSING',
+        publicKey: publicKey ? `${publicKey.substring(0, 5)}...` : 'MISSING'
+      });
+
       // Check if environment variables are available
       if (!serviceId || !templateId || !publicKey) {
         console.error('EmailJS configuration missing:', {
