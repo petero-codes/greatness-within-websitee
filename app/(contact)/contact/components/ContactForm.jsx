@@ -26,6 +26,8 @@ const ContactForm = ({ onSubmit }) => {
   }, []);
 
   const onSubmitHandler = async (data) => {
+    console.log('Form submitted!', data);
+    
     try {
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
@@ -37,6 +39,9 @@ const ContactForm = ({ onSubmit }) => {
         templateId: templateId || 'MISSING',
         publicKey: publicKey ? `${publicKey.substring(0, 5)}...` : 'MISSING'
       });
+      
+      // Test toast immediately
+      toast.info("Processing your message...");
 
       // Check if environment variables are available
       if (!serviceId || !templateId || !publicKey) {
@@ -180,6 +185,9 @@ const ContactForm = ({ onSubmit }) => {
         type="submit"
         className="w-full rounded-xl py-6 text-base font-semibold mt-6"
         disabled={isSubmitting}
+        onClick={() => {
+          console.log('Button clicked, isSubmitting:', isSubmitting);
+        }}
       >
         {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
