@@ -76,15 +76,28 @@ const ContactForm = ({ onSubmit }) => {
         await onSubmit(data);
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      // Log full error details for debugging
+      console.error('Error sending email - Full details:', {
+        error,
+        errorType: typeof error,
+        errorText: error?.text,
+        errorMessage: error?.message,
+        errorStatus: error?.status,
+        errorStatusText: error?.statusText,
+        serviceId,
+        templateId,
+        publicKey: publicKey ? `${publicKey.substring(0, 5)}...` : 'MISSING'
+      });
       
       // Provide more specific error messages
       let errorMessage = "Failed to send message. ";
       
-      if (error.text) {
+      if (error?.text) {
         errorMessage += error.text;
-      } else if (error.message) {
+      } else if (error?.message) {
         errorMessage += error.message;
+      } else if (typeof error === 'string') {
+        errorMessage += error;
       } else {
         errorMessage += "Please try again later or contact me directly at chapokumih@gmail.com";
       }
