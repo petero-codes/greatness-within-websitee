@@ -120,12 +120,37 @@ If you see this error, check your EmailJS template:
 4. **Save the template**
 5. **Test again**
 
+### Error: "The service ID not found"
+
+If you see this error, the Service ID in your environment variables doesn't match your EmailJS account.
+
+**To fix this:**
+
+1. **Go to EmailJS Dashboard:** https://dashboard.emailjs.com/admin
+2. **Click on "Email Services"** in the left sidebar
+3. **Find your service** (it should show your email provider like Gmail)
+4. **Click on the service** to view its details
+5. **Copy the Service ID** - it will look like `service_xxxxxxx`
+6. **Update in Vercel:**
+   - Go to Vercel → Your Project → Settings → Environment Variables
+   - Find `NEXT_PUBLIC_EMAILJS_SERVICE_ID`
+   - Update it with the correct Service ID from step 5
+   - Click Save
+7. **Redeploy** your site in Vercel
+
+**Important:** Make sure you're using the Service ID from the same EmailJS account where you created the template!
+
 ### Check Environment Variables in Vercel
 
-Make sure all three variables are set in Vercel:
-- `NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_ly12c7v`
-- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_18ik2gr`
-- `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=fN-_U-7Bu0HMYWeaw`
+Make sure all three variables are set correctly in Vercel:
+- `NEXT_PUBLIC_EMAILJS_SERVICE_ID` = Your actual Service ID from EmailJS dashboard
+- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` = Your Template ID (should be `template_18ik2gr`)
+- `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` = Your Public Key (should be `fN-_U-7Bu0HMYWeaw`)
+
+**To verify your IDs:**
+1. **Service ID:** EmailJS Dashboard → Email Services → Click your service → Copy the ID
+2. **Template ID:** EmailJS Dashboard → Email Templates → Click your template → Copy the ID
+3. **Public Key:** EmailJS Dashboard → Account → General → Copy Public Key
 
 After updating, **redeploy** your site in Vercel.
 
