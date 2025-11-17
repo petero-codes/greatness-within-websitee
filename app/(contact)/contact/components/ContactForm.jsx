@@ -44,10 +44,19 @@ const ContactForm = ({ onSubmit }) => {
       }
 
       // Log success details
-      console.log('Email sent successfully! Email ID:', result.id);
+      console.log('Email sent successfully!');
+      console.log('Owner email ID:', result.ownerEmailId);
+      console.log('Auto-reply email ID:', result.autoReplyId);
+      console.log('Auto-reply sent:', result.autoReplySent);
 
-      // Show success toast
-      toast.success("Message sent successfully! I'll get back to you soon.");
+      // Show success toast with auto-reply status
+      if (result.autoReplySent) {
+        toast.success("Message sent successfully! You'll receive a confirmation email shortly.");
+      } else {
+        toast.success("Message sent successfully! I'll get back to you soon.", {
+          description: result.warning || "Note: Auto-reply may not have been sent."
+        });
+      }
       
       // Reset form
       reset();
