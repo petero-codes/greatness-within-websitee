@@ -34,9 +34,17 @@ const ContactForm = ({ onSubmit }) => {
 
       const result = await response.json();
 
+      // Log the full response for debugging
+      console.log('API Response Status:', response.status);
+      console.log('API Response:', result);
+
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        console.error('API Error:', result);
+        throw new Error(result.error || result.details || 'Failed to send message');
       }
+
+      // Log success details
+      console.log('Email sent successfully! Email ID:', result.id);
 
       // Show success toast
       toast.success("Message sent successfully! I'll get back to you soon.");
