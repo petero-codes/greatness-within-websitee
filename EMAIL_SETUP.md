@@ -143,9 +143,11 @@ If you see this error, the Service ID in your environment variables doesn't matc
 ### Check Environment Variables in Vercel
 
 Make sure all three variables are set correctly in Vercel:
-- `NEXT_PUBLIC_EMAILJS_SERVICE_ID` = Your actual Service ID from EmailJS dashboard (e.g., `service_ly12c7v`)
-- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` = Your actual Template ID from EmailJS dashboard (e.g., `template_8zabl5f`)
+- `NEXT_PUBLIC_EMAILJS_SERVICE_ID` = Your actual Service ID from EmailJS dashboard (e.g., `service_2tftom5`)
+- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` = Your actual Template ID from EmailJS dashboard (e.g., `template_p90sqr2`)
 - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` = Your Public Key (should be `fN-_U-7Bu0HMYWeaw`)
+
+**⚠️ IMPORTANT:** Always use the Service ID and Template ID that match what you see in your EmailJS dashboard!
 
 **⚠️ IMPORTANT:** The Template ID in Vercel must match the Template ID shown in your EmailJS dashboard!
 
