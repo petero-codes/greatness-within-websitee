@@ -58,7 +58,7 @@ export async function POST(request) {
 
     // Prepare sender email for auto-reply (ensure it's not owner's email)
     const senderEmail = from_email.trim().toLowerCase();
-    
+
     // Send both emails in parallel for better performance
     console.log('=== EMAIL SENDING DEBUG ===');
     console.log('API Key present:', !!apiKey);
@@ -70,16 +70,16 @@ export async function POST(request) {
     console.log('Auto-reply will be sent to:', senderEmail);
     console.log('Are sender and owner different?', senderEmail !== 'chapokumih@gmail.com');
     console.log('===========================');
-    
+
     // Send both emails simultaneously
     const [ownerEmail, autoReply] = await Promise.all([
       // Email to portfolio owner
       resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: ['chapokumih@gmail.com'],
-      replyTo: from_email,
-      subject: `New Message from ${sanitizedName}`,
-      html: `
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: ['chapokumih@gmail.com'],
+        replyTo: from_email,
+        subject: `New Message from ${sanitizedName}`,
+        html: `
         <div style="font-family: system-ui, sans-serif, Arial; font-size: 14px; line-height: 1.6; color: #333;">
           <div style="margin-bottom: 20px;">
             <p>A message by <strong>${sanitizedName}</strong> has been received. Kindly respond at your earliest convenience.</p>
@@ -131,7 +131,7 @@ export async function POST(request) {
               <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 20px;">
                 <p style="font-size: 14px; color: #999; margin: 0;">
                   Best regards,<br>
-                  <strong style="color: #667eea;">Petero Mzee</strong><br>
+                  <strong style="color: #667eea;">Greatness Within</strong><br>
                   <span style="color: #999;">Full Stack Developer</span>
                 </p>
               </div>
@@ -173,9 +173,9 @@ export async function POST(request) {
     }
 
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Email sent successfully', 
+      {
+        success: true,
+        message: 'Email sent successfully',
         ownerEmailId: ownerEmail.data?.id,
         autoReplyId: autoReply.data?.id,
         autoReplySent: !autoReply.error

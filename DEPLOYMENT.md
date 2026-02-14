@@ -10,7 +10,7 @@
    git add .
    git commit -m "Initial commit - Portfolio website"
    git branch -M main
-   git remote add origin https://github.com/petero-codes/portfolio.git
+   git remote add origin https://github.com/Gwithin/portfolio.git
    git push -u origin main
    ```
 

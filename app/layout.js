@@ -15,13 +15,13 @@ const geistSans = localFont({
 });
 
 export const metadata = {
-  title: "Petero Mzee\'s Portfolio",
-  icons:{
-icon: "/logo.png"
+  title: "Greatness Within",
+  icons: {
+    icon: "/logo.png"
   },
-  description: "Experienced fullstack developer specializing in modern web technologies. View my projects, skills, and experience.",
+  description: "GREATNESS WITHIN is a brand",
   keywords: "fullstack developer,backend developer, frontend developer, web development, JavaScript,JS, C#, CSharp, React, Node.js, portfolio",
-  author: "Petero Mzee",
+  author: "Greatness Within",
   robots: "index, follow",
 };
 
